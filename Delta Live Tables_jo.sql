@@ -139,6 +139,10 @@ AS SELECT * from STREAM(live.new_txs)
 
 -- COMMAND ----------
 
+hello
+
+-- COMMAND ----------
+
 -- DBTITLE 1,Let's quarantine the bad transaction for further analysis
 -- This is the inverse condition of the above statement to quarantine incorrect data for further analysis.
 CREATE STREAMING LIVE TABLE quarantine_bad_txs (
