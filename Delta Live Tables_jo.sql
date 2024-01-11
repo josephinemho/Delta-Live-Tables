@@ -24,7 +24,8 @@
 -- MAGIC
 -- MAGIC Our goal is to ingest this data in near real time and build table for our Analyst team while ensuring data quality.
 -- MAGIC
--- MAGIC **Your DLT Pipeline is ready!** Your pipeline was started using this notebook and is <a dbdemos-pipeline-id="dlt-loans" href="/#joblist/pipelines/55edeeca-834e-40e9-9435-c8748a4c3703">available here</a>.
+-- MAGIC **Your DLT Pipeline is ready!** Your pipeline was started using this notebook and is <a dbdemos-pipeline-id="dlt-loans" href="/#joblist/pipelines/1c1e4413-0e79-4037-abaf-1ea23cff74b0">available here</a>.
+-- MAGIC
 -- MAGIC
 -- MAGIC <!-- Collect usage data (view). Remove it to disable collection. View README for more details.  -->
 -- MAGIC <img width="1px" src="https://ppxrzfxige.execute-api.us-west-2.amazonaws.com/v1/analytics?category=data-engineering&org_id=1444828305810485&notebook=%2F01-DLT-Loan-pipeline-SQL&demo_name=dlt-loans&event=VIEW&path=%2F_dbdemos%2Fdata-engineering%2Fdlt-loans%2F01-DLT-Loan-pipeline-SQL&version=1">
@@ -40,11 +41,6 @@
 -- MAGIC * `loans/historical_loans` (loan from legacy system, new data added every week)
 -- MAGIC
 -- MAGIC Let's ingest this data incrementally, and then compute a couple of aggregates that we'll need for our final Dashboard to report our KPI.
-
--- COMMAND ----------
-
--- DBTITLE 1,Let's review the incoming data
--- MAGIC %fs ls /demos/dlt/loans/raw_transactions
 
 -- COMMAND ----------
 
@@ -139,10 +135,6 @@ AS SELECT * from STREAM(live.new_txs)
 
 -- COMMAND ----------
 
-hello
-
--- COMMAND ----------
-
 -- DBTITLE 1,Let's quarantine the bad transaction for further analysis
 -- This is the inverse condition of the above statement to quarantine incorrect data for further analysis.
 CREATE STREAMING LIVE TABLE quarantine_bad_txs (
@@ -200,7 +192,7 @@ AS SELECT sum(count) as sum_count, country_code FROM live.cleaned_new_txs GROUP 
 
 -- MAGIC %md ## Next steps
 -- MAGIC
--- MAGIC Your DLT pipeline is ready to be started. <a dbdemos-pipeline-id="dlt-loans" href="/#joblist/pipelines/55edeeca-834e-40e9-9435-c8748a4c3703">Click here to access the pipeline</a> created for you using this notebook.
+-- MAGIC Your DLT pipeline is ready to be started. <a dbdemos-pipeline-id="dlt-loans" href="/#joblist/pipelines/1c1e4413-0e79-4037-abaf-1ea23cff74b0">Click here to access the pipeline</a> created for you using this notebook.
 -- MAGIC
 -- MAGIC To create a new one, Open the DLT menu, create a pipeline and select this notebook to run it. To generate sample data, please run the [companion notebook]($./_resources/00-Loan-Data-Generator) (make sure the path where you read and write the data are the same!)
 -- MAGIC
